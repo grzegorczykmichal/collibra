@@ -8,9 +8,11 @@ import { ReactQueryProvider, ReduxProvider } from './infrastucture';
 ReactDOM.render(
   <React.StrictMode>
     <ReduxProvider root={root}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ReactQueryProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ReactQueryProvider>
     </ReduxProvider>
   </React.StrictMode>,
   document.getElementById('root'),
