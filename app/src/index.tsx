@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { ReactQueryProvider } from './infrastucture/react-query';
 import { BrowserRouter } from 'react-router-dom';
+import { App, root } from './application';
+import './index.css';
+import { ReactQueryProvider, ReduxProvider } from './infrastucture';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ReactQueryProvider>
+    <ReduxProvider root={root}>
+      <BrowserRouter>
         <App />
-      </ReactQueryProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ReduxProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
