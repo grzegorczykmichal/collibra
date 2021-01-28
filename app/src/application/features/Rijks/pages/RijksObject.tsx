@@ -4,7 +4,7 @@ import { rjiksApi } from '../lib/rjiksApi';
 import { useParams, Link, useHistory } from 'react-router-dom';
 import css from './RijksObject.module.css';
 import { RjikApiResponseArtObject } from '../models';
-import { Spinner, Portal } from '../../../components';
+import { Spinner } from '../../../components';
 import {
   ColorsGraph,
   Section,
