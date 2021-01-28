@@ -1,6 +1,23 @@
+require('dotenv').config();
 const axios = require('axios');
 
 exports.handler = async function (event, context) {
+  const error = event.queryStringParameters.error || '';
+
+  if (error) {
+    const qs = new URLSearchParams('');
+    for (const k in event.queryStringParameters) {
+      qs.append(k, event.queryStringParameters[k]);
+    }
+
+    return {
+      statusCode: 302,
+      headers: {
+        Location: `/error?${qs}`,
+      },
+    };
+  }
+
   const code = event.queryStringParameters.code || '';
   const state = event.queryStringParameters.state || '';
 
@@ -8,7 +25,7 @@ exports.handler = async function (event, context) {
     return {
       statusCode: 302,
       headers: {
-        Location: 'https://collibra.softsoft.dev',
+        Location: '/',
       },
     };
   }
@@ -19,19 +36,22 @@ exports.handler = async function (event, context) {
       client_secret: process.env.DRIBBLE_SECRET_ID,
       code: code,
     });
+
+    const tokenData = JSON.stringify(response.data);
+    console.log(tokenData);
     return {
       statusCode: 302,
       headers: {
-        Location: 'https://collibra.softsoft.dev',
-        'Set-Cookie': `auth_token_data=${JSON.stringify(
-          response.data,
-        )}; Path=/; Max-Age=3600`,
+        Location: '/app',
+        'Set-Cookie': `auth_token_data=${tokenData}; Path=/; Max-Age=3600`,
       },
     };
   } catch (error) {
     return {
-      statusCode: 200,
-      body: JSON.stringify({ message: 'Hello World' }),
+      statusCode: 302,
+      headers: {
+        Location: '/error',
+      },
     };
   }
 };

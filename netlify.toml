@@ -2,12 +2,4 @@
  base="app/"
  publish="build"
  command="npm run build"
-
-[[redirects]]
- from = "/api/*"
- to = "/.netlify/functions/:splat"
- status = 200
-[[redirects]]
- from = "/*"
- to = "/index.html"
- status = 200
+ functions="functions/"

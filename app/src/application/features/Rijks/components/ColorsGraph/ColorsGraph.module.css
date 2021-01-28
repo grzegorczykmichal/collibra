@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+.colorBlock {
+  height: 1rem;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+.colorBlock:hover {
+  transform: scaleY(1.5);
+}

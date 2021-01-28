@@ -1,0 +1,28 @@
+.title {
+  margin: 0;
+}
+
+.title span {
+  font-size: 50%;
+  display: block;
+  font-weight: normal;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons > *:only-child {
+  margin-left: auto;
+}
+
+.item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--dark1);
+}
