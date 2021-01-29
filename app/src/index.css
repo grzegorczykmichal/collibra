@@ -1,7 +1,7 @@
 @import-normalize;
 
 :root {
-  --primaryFont: 'Roboto', sans-serif;
+  --primaryFont: 'Roboto Mono', sans-serif;
   --secondaryFont: 'Roboto Mono', sans-serif;
 
   --dark1: hsla(60, 1%, 20%, 1);
@@ -12,7 +12,7 @@
   --accent1l: hsla(68, 79%, 70%, 1);
   --accent2: hsla(68, 79%, 90%, 1);
 
-  --backgroundColor: transparent;
+  --backgroundColor: var(--light1);
 }
 
 html {

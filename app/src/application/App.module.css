@@ -4,12 +4,18 @@
   display: grid;
   grid-gap: 1rem;
   grid-template-areas: 'topbar' 'content' 'footer';
-  grid-template-rows: 100px 10fr 1fr;
+  grid-template-rows: 100px 1fr 200px;
 }
 
 .footer {
   grid-area: footer;
   background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem 0;
+  margin-top: 5rem;
 }
 
 .topbar {
@@ -30,7 +36,7 @@
 }
 .content {
   grid-area: content;
-  padding: 0rem;
+  padding: 0 1rem;
 }
 
 @media (min-width: 1024px) {

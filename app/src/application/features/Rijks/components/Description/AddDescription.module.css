@@ -1,0 +1,13 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--dark2);
+  border-radius: 0.25rem;
+  padding: 1.5rem;
+}
+
+.root > * + * {
+  margin-top: 1rem;
+}

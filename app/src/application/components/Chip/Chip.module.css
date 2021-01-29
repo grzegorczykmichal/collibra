@@ -6,6 +6,9 @@
   font-size: 0.875rem;
   display: inline-block;
 }
+.root:hover {
+  background: var(--dark2);
+}
 
 .root + .root {
   margin: 0 0 0 1rem;

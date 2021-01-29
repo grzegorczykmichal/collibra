@@ -2,21 +2,8 @@ import { Route, Switch } from 'react-router-dom';
 import style from './App.module.css';
 import { Navigation, NavigationItem, TopBar } from './components';
 import { Dribble, Rijks, RijksObject } from './features';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-
-function Info() {
-  return (
-    <div>
-      <div>Collibra Fonend Challange</div>
-      <div>Michał Grzergoczyk</div>
-    </div>
-  );
-}
 
 function App() {
-  library.add(fas);
-
   return (
     <main className={style.main}>
       <div className={style.topbar}>
@@ -35,7 +22,8 @@ function App() {
         </Switch>
       </div>
       <footer className={style.footer}>
-        <Info />
+        <p>Collibra Fonend Challange</p>
+        <p>Michał Grzergoczyk</p>
       </footer>
     </main>
   );

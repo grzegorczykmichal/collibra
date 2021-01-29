@@ -1,10 +1,6 @@
 import { Color } from './Color';
+import { NormalizedColor } from './NormalizedColor';
 import { Image } from './Image';
-
-type ColorWithWithNormalization = {
-  originalHex: string;
-  normalizedHex: string;
-};
 
 export type Maker = {
   name: string;
@@ -41,7 +37,7 @@ export type Dimension = {
 export type ArtObject = {
   artistRole: string;
   colors: Color[];
-  colorsWithNormalization: ColorWithWithNormalization[];
+  colorsWithNormalization: NormalizedColor[];
   dating: Dating;
   description: string;
   dimensions: Dimension[];
@@ -66,6 +62,7 @@ export type ArtObject = {
   principalMakers: Maker[];
   plaqueDescriptionDutch: string;
   plaqueDescriptionEnglish: string;
+  productionPlaces: string[];
   priref: string;
   principalMaker: string;
   subTitle: string;

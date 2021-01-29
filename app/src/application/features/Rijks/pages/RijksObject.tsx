@@ -1,35 +1,45 @@
-import { useState } from 'react';
 import { useQuery } from 'react-query';
-import { rjiksApi } from '../lib/rjiksApi';
-import { useParams, Link, useHistory } from 'react-router-dom';
-import css from './RijksObject.module.css';
-import { RjikApiResponseArtObject } from '../models';
+import { useParams } from 'react-router-dom';
 import { Spinner } from '../../../components';
 import {
-  ColorsGraph,
-  Section,
-  Header,
-  Body,
-  Materials,
-  Types,
-  Dimensions,
   Author,
+  ColorsGraph,
+  DeleteButton,
+  Description,
+  Dimensions,
+  GoBack,
+  Materials,
   Medium,
+  Origins,
+  Title,
+  Types,
+  Year,
 } from '../components';
+import { Image } from '../components/Image';
 import { useBodyBackgroundColor } from '../hooks';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { rjiksApi } from '../lib/rjiksApi';
+import { RjikApiResponseArtObject } from '../models';
+import css from './RijksObject.module.css';
+
+type ErrorType = { message: string };
+
+function Error({ error }: { error: ErrorType | null }) {
+  const message = error ? error.message : 'Unknown Error';
+  return (
+    <div className={css.centered}>
+      <div className={css.errorMessage}>{message}</div>
+      <GoBack />
+    </div>
+  );
+}
 
 function RijksObject() {
-  const { goBack } = useHistory();
-  const [editDescription, setEditDescription] = useState<boolean>(false);
   const { objectNumber } = useParams<{ objectNumber: string }>();
 
-  const {
-    isLoading,
-    isError,
-    error,
-    data,
-  } = useQuery<RjikApiResponseArtObject>(
+  const { isLoading, isError, error, data } = useQuery<
+    RjikApiResponseArtObject,
+    ErrorType
+  >(
     ['rjik_objects', objectNumber],
     async () => {
       const response = await rjiksApi.get(`/collection/${objectNumber}`);
@@ -41,8 +51,10 @@ function RijksObject() {
     },
   );
 
-  const colors = data?.artObject.normalized32Colors || [];
+  const colors = data?.artObject.colors || [];
+  const normalizedColors = data?.artObject.colorsWithNormalization || [];
   useBodyBackgroundColor(colors);
+
   if (isLoading) {
     return (
       <div className={css.centered}>
@@ -52,13 +64,7 @@ function RijksObject() {
   }
 
   if (isError) {
-    const { message = 'Unknown Error' } = error as { message: string };
-    return (
-      <div className={css.centered}>
-        <div className={css.errorMessage}>{message}</div>
-        <Link to="/rijks">back</Link>
-      </div>
-    );
+    return <Error error={error} />;
   }
 
   if (!data) {
@@ -66,86 +72,39 @@ function RijksObject() {
   }
 
   const { artObject } = data;
-
-  const [author] = artObject.principalMakers || [];
-
   return (
     <div className={css.page}>
-      {/* {editDescription && <Portal>asdasd</Portal>} */}
       <div className={css.title}>
-        <button role="link" onClick={() => goBack()}>
-          <FontAwesomeIcon icon="arrow-left" />
-          back
-        </button>
-        <h1
-          style={{
-            color: colors.length > 0 ? colors[0].hex : 'initial',
-          }}
-        >
-          {artObject.title}
-        </h1>
+        <GoBack className={css.backButton} />
+        <Title title={artObject.title} />
       </div>
-      {artObject.webImage && (
-        <div className={css.image}>
-          <img src={artObject.webImage.url} alt="" />
-        </div>
-      )}
-      <ColorsGraph className={css.colors} colors={colors} />
-      <div />
-      <Author className={css.author} author={author} />
-      <Medium className={css.medium} medium={artObject.physicalMedium} />
-
-      <Section className={css.description}>
-        <Header>Description</Header>
-        <Body>
-          {editDescription ? (
-            <textarea
-              style={{ width: '100%' }}
-              name="description"
-              id="description"
-              rows={10}
-              defaultValue={artObject.plaqueDescriptionEnglish}
-            ></textarea>
-          ) : (
-            <p>{artObject.plaqueDescriptionEnglish}</p>
-          )}
-          {editDescription ? (
-            <>
-              <button
-                onClick={() => {
-                  setEditDescription(false);
-                }}
-              >
-                Save
-              </button>
-              <button
-                onClick={() => {
-                  setEditDescription(false);
-                }}
-              >
-                Cancel
-              </button>
-            </>
-          ) : (
-            <button
-              onClick={() => {
-                setEditDescription(true);
-              }}
-            >
-              edit
-            </button>
-          )}
-        </Body>
-      </Section>
-
-      <Materials className={css.materials} materials={artObject.materials} />
-
-      <Dimensions
-        className={css.dimensions}
-        units={['cm', 'inch']}
-        dimensions={artObject.dimensions}
+      <Image
+        image={artObject.webImage}
+        alt={artObject.title}
+        calssName={css.image}
       />
+      <ColorsGraph
+        className={css.colors}
+        colors={colors}
+        normalizedColors={normalizedColors}
+      />
+      <div className={css.delete}>
+        <DeleteButton
+          className={css.deleteButton}
+          objectNumber={objectNumber}
+        />
+      </div>
+      <Author className={css.author} author={artObject.principalMakers[0]} />
+      <Year className={css.year} year="1987" />
+      <Description
+        className={css.description}
+        description={artObject.plaqueDescriptionEnglish}
+      />
+      <Materials className={css.materials} materials={artObject.materials} />
       <Types className={css.types} types={artObject.objectTypes} />
+      <Medium className={css.medium} medium={artObject.physicalMedium} />
+      <Origins className={css.origins} origins={artObject.productionPlaces} />
+      <Dimensions className={css.dimensions} dimensions={artObject.subTitle} />
     </div>
   );
 }
