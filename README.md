@@ -32,7 +32,8 @@ DRIBBLE_TOKEN_URL=https://dribbble.com/oauth/token
 DRIBBLE_SECRET_ID=[/** your_secret_app_id same **/]
 DRIBBLE_CLIENT_ID=[/** your_client_app_id same as REACT_APP_DRIBBLE_CLIENT_ID **/]
 ```
-3. Go to ```/app``` directory and run 
+
+3. Run the following being in ```/app```
 ```bash
 netlify dev
 ```
