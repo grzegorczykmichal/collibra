@@ -1,7 +1,7 @@
 .page {
   transition: background 1s;
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-template-rows: 40vh auto;
   grid-template-areas:
@@ -20,7 +20,6 @@
 
 @media (min-width: 480px) {
   .page {
-    grid-gap: 2rem;
     grid-template-areas:
       '. image image image'
       'colors colors colors deleteButton'

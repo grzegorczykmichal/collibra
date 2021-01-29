@@ -29,6 +29,8 @@ function Pagination({ total }: Props) {
     p: page + 1,
   })}`;
 
+  const appPages = Math.ceil(total / size);
+
   return (
     <div className={css.root}>
       {page > 1 && (
@@ -40,13 +42,15 @@ function Pagination({ total }: Props) {
       )}
 
       <div className={css.count}>
-        {page} of {Math.ceil(total / size)}
+        {page} of {appPages}
       </div>
-      <div className={css.next}>
-        <LinkButton secondary={true} to={`${nextPageUrl}`}>
-          next
-        </LinkButton>
-      </div>
+      {page < appPages && (
+        <div className={css.next}>
+          <LinkButton secondary={true} to={`${nextPageUrl}`}>
+            next
+          </LinkButton>
+        </div>
+      )}
     </div>
   );
 }

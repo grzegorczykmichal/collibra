@@ -1,7 +1,7 @@
 .root {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 
 .previous {
@@ -15,6 +15,7 @@
   justify-content: center;
   color: var(--dark2);
   font-size: 0.875rem;
+  line-height: 2rem;
 }
 
 .next {
