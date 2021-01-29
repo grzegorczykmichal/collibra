@@ -1,0 +1,7 @@
+.root {
+  background: transparent;
+}
+
+.dark {
+  background: var(--dark1);
+}

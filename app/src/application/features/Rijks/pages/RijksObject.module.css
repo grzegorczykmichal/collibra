@@ -1,0 +1,140 @@
+.page {
+  transition: background 1s;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: 40vh auto;
+  grid-template-areas:
+    '. image image image'
+    'colors colors colors colors'
+    '.  deleteButton deleteButton .'
+    'author author year year'
+    'description description description description'
+    'materials materials materials materials'
+    'types types types types'
+    'origins origins origins origins'
+    'medium medium medium medium'
+    'dimensions dimensions dimensions dimensions';
+  max-width: 1280px;
+}
+
+@media (min-width: 480px) {
+  .page {
+    grid-template-areas:
+      '. image image image'
+      'colors colors colors deleteButton'
+      'author author year year'
+      'description description description description'
+      'materials materials types types'
+      'medium medium origins origins'
+      'dimensions dimensions dimensions dimensions';
+  }
+}
+
+.title {
+  grid-row: 1/1;
+  grid-column: 1/-2;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.image {
+  background-color: var(--backgroundColor);
+  grid-area: image;
+}
+
+.colors {
+  grid-area: colors;
+  display: flex;
+  align-items: center;
+}
+
+.delete {
+  grid-area: deleteButton;
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 480px) {
+  .delete {
+    justify-content: flex-end;
+  }
+}
+
+.author {
+  grid-area: author;
+}
+
+.year {
+  grid-area: year;
+}
+
+.description {
+  grid-area: description;
+}
+
+.materials {
+  grid-area: materials;
+}
+
+.types {
+  grid-area: types;
+}
+
+.medium {
+  grid-area: medium;
+}
+
+.origins {
+  grid-area: origins;
+}
+
+.dimensions {
+  grid-area: dimensions;
+}
+
+.centered {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.errorMessage {
+  font-weight: bold;
+  border: 1px solid var(--dark1);
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin: 0 0 2rem 0;
+}
+
+.errorMessage::after {
+  content: ' \2620';
+}
+.errorMessage::before {
+  content: '\2620  ';
+}
+
+.backButton {
+  align-self: flex-start;
+  /* margin: 0 0 0 1rem; */
+}
+
+@media (min-width: 1024px) {
+  .backButton {
+    margin: 0;
+  }
+}
+
+@media (min-width: 480px) {
+  .deleteButton {
+    /* margin: 0 1rem 0 0; */
+  }
+}
+@media (min-width: 1024px) {
+  .deleteButton {
+    margin: 0;
+  }
+}

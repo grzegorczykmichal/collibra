@@ -1,0 +1,22 @@
+.root {
+  overflow: hidden;
+  background: var(--backgroundColor);
+}
+
+.img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

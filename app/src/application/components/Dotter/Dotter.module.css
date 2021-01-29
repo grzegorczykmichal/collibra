@@ -1,0 +1,53 @@
+.dot1 {
+  opacity: 1;
+}
+
+.dot2 {
+  opacity: 0;
+  animation: dot2Animation 1s infinite step-end;
+}
+@keyframes dot2Animation {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.dot3 {
+  opacity: 0;
+  animation: dot3Animation 1s infinite step-end;
+}
+@keyframes dot3Animation {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}

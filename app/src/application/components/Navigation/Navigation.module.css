@@ -1,0 +1,4 @@
+.root {
+  display: inline-flex;
+  justify-content: flex-end;
+}

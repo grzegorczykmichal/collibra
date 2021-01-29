@@ -1,0 +1,26 @@
+.root {
+  font-family: var(--secondaryFont);
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  color: var(--dark1);
+  transition: background 0.5s;
+}
+
+.root:hover {
+  background: var(--accent2);
+}
+
+.active {
+  background: var(--accent1);
+}
+
+.active:hover {
+  background: var(--accent1);
+}
+
+.root + .root {
+  margin: 0 0 0 0.5rem;
+}

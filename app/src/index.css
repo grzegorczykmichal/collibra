@@ -1,13 +1,45 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import-normalize;
+
+:root {
+  --primaryFont: 'Roboto Mono', sans-serif;
+  --secondaryFont: 'Roboto Mono', sans-serif;
+
+  --dark1: hsla(60, 1%, 20%, 1);
+  --dark2: hsla(60, 1%, 40%, 1);
+  --light1: hsla(0, 0%, 96%, 1);
+  --light2: hsla(0, 0%, 100%, 1);
+  --accent1: hsla(68, 79%, 70%, 1);
+  --accent1l: hsla(68, 79%, 70%, 1);
+  --accent2: hsla(68, 79%, 90%, 1);
+
+  --backgroundColor: var(--light1);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--light1);
+  color: var(--dark1);
+  transition: background 0.5s;
+}
+
+p {
+  margin: 0;
 }
