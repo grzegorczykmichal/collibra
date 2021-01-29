@@ -1,6 +1,12 @@
-import { useDribble } from '../../../../infrastucture';
+import { DribbleLoginButton } from '../../../../infrastucture';
+import css from './Dribble.module.css';
+
 function Dribble() {
-  return <>Dribble 2</>;
+  return (
+    <div className={css.page}>
+      <DribbleLoginButton />
+    </div>
+  );
 }
 
 export { Dribble };

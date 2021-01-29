@@ -1,7 +1,7 @@
 import { parse, stringify } from 'query-string';
 import { useQuery } from 'react-query';
 import { useLocation } from 'react-router-dom';
-import { CenteredSpinner } from '../../../components';
+import { Spinner } from '../../../components';
 import { ArtObjectsList, Filters, Pagination } from '../components';
 import { rjiksApi } from '../lib/rjiksApi';
 import { RjikApiResponseCollection } from '../models';
@@ -14,7 +14,7 @@ function Rijks() {
   const size = 20;
   searchObject['ps'] = String(size);
 
-  const { isLoading, isFetching, data } = useQuery<RjikApiResponseCollection>(
+  const { isLoading, data } = useQuery<RjikApiResponseCollection>(
     ['rjik_objects', search],
     async () => {
       const response = await rjiksApi.get(
@@ -32,16 +32,15 @@ function Rijks() {
         Rijksmuseum
         <span>Amsterdam</span>
       </h1>
-      {<Pagination total={total} />}
+      <Pagination total={total} />
       <Filters />
-      {isLoading && <CenteredSpinner />}
+      {isLoading && <Spinner />}
       {data && (
         <ArtObjectsList
           className={classnames({ [css.fade]: isLoading })}
           artObjects={data.artObjects}
         />
       )}
-      {!isFetching && total > 0 && <Pagination total={total} />}
     </div>
   );
 }
