@@ -41,6 +41,6 @@
 
 ### Next steps
 
-Please naviate to ```/rijk``` page to see the sollution. It uses the API from https://www.rijksmuseum.nl/en/research/conduct-research/data.
+Please naviate to ```/rijk``` page to see the sollution. It uses the API from [RIJKSMUSEUM](https://www.rijksmuseum.nl/en/research/conduct-research/data).
 
 The ```/dribble``` page include unfinished solution for Dribbble api, as it does not comply with the requirements.
