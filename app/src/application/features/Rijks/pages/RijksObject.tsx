@@ -16,7 +16,7 @@ import {
   Year,
 } from '../components';
 import { Image } from '../components/Image';
-import { useBodyBackgroundColor } from '../hooks';
+import { useBackgroundColor } from '../hooks';
 import { rjiksApi } from '../lib/rjiksApi';
 import { RjikApiResponseArtObject } from '../models';
 import css from './RijksObject.module.css';
@@ -53,7 +53,7 @@ function RijksObject() {
 
   const colors = data?.artObject.colors || [];
   const normalizedColors = data?.artObject.colorsWithNormalization || [];
-  useBodyBackgroundColor(colors);
+  useBackgroundColor(colors);
 
   if (isLoading) {
     return (

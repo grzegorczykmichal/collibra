@@ -1,0 +1,38 @@
+.link {
+  text-decoration: none;
+  color: var(--dark1);
+}
+
+.artObjectItem {
+  background-color: var(--light2);
+  transition: background 0.3s;
+  padding: 1rem;
+}
+
+.artObjectItem:hover {
+  background: var(--accent1);
+}
+
+.artObjectItem:first-child {
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.artObjectItem:last-child {
+  border-radius: 0 0 0.25rem 0.25rem;
+}
+
+.title {
+  font-weight: bold;
+}
+.author {
+  color: var(--dark2);
+  font-size: 0.875rem;
+}
+
+.emptyList {
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 100%; */
+}

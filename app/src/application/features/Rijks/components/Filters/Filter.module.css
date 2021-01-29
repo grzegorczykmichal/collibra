@@ -1,0 +1,9 @@
+.root {
+  padding: 0 1rem;
+  background: var(--light1);
+  font-size: 0.875rem;
+  margin: 1rem 0;
+}
+.value {
+  font-weight: bold;
+}

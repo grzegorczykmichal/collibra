@@ -14,7 +14,7 @@ function DeleteButton({ className, objectNumber }: Props) {
     { message: string },
     { objectNumber: string }
   >(async (data) => {
-    return rjiksApi.post('http://httpstat.us/401/cors');
+    return rjiksApi.post('https://httpstat.us/401/cors');
   });
 
   return (

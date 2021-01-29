@@ -7,18 +7,19 @@
   border-radius: 0.25rem;
   color: var(--dark1);
   transition: background 0.5s;
-  background: var(--backgroundColor);
+  background: var(--accent1);
   border: none;
+  display: inline-block;
 }
 
 .secondary {
   background: transparent;
-  color: var(--backgroundColor);
+  color: var(--dark1);
 }
 
 .root:hover,
 .root:focus {
-  background: var(--accent1);
+  background: var(--accent2);
   color: var(--dark1);
   cursor: pointer;
 }

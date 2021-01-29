@@ -24,7 +24,7 @@ function Description({ description, className }: Props) {
     { message: string },
     { description: string }
   >((data) => {
-    return rjiksApi.post('http://httpstat.us/400/cors', data);
+    return rjiksApi.post('https://httpstat.us/400/cors', data);
   });
 
   return (

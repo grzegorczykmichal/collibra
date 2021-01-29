@@ -1,3 +1,8 @@
+.page {
+  max-width: 1024px;
+  min-height: 100%;
+}
+
 .title {
   margin: 0;
 }
@@ -6,11 +11,6 @@
   font-size: 50%;
   display: block;
   font-weight: normal;
-}
-
-.list {
-  list-style: none;
-  padding: 0;
 }
 
 .buttons {
@@ -22,7 +22,6 @@
   margin-left: auto;
 }
 
-.item {
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--dark1);
+.fade {
+  opacity: 0.7;
 }
