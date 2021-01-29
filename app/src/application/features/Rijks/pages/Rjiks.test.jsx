@@ -1,8 +1,12 @@
 import React from 'react';
-import { render, waitForElementToBeRemoved } from '@testing-library/react';
+import {
+  render,
+  waitForElementToBeRemoved,
+  fireEvent,
+} from '@testing-library/react';
 import { Rijks } from './Rijks';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter, Route } from 'react-router';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
@@ -95,35 +99,29 @@ const server = setupServer(
 beforeAll(() => server.listen());
 afterAll(() => server.close());
 
-const testRender = () => {
+const testRender = (context = {}) => {
   const queryClient = new QueryClient();
   return render(
-    <MemoryRouter>
-      <QueryClientProvider client={queryClient}>
-        <Rijks />
-      </QueryClientProvider>
-    </MemoryRouter>,
+    <QueryClientProvider client={queryClient}>
+      <MemoryRouter initialEntries={['/']} initialIndex={0}>
+        <Route path="/">
+          <Rijks />
+        </Route>
+        <Route
+          path="/rijks/:objectNumber"
+          render={({ location }) => {
+            context.location = location;
+            return <div>mock details page</div>;
+          }}
+        />
+      </MemoryRouter>
+      ,
+    </QueryClientProvider>,
   );
 };
 
-test('renders learn react link', async () => {
-  // const wfs = jest.spyOn(window, 'fetch');
-
-  // wfs.mockImplementationOnce(() => {
-  //   const body = {
-  //     results: [{ name: 'TESTNAME' }],
-  //   };
-  //   const res = new Response(JSON.stringify(body));
-  //   return Promise.resolve(res);
-  // });
-
-  // const expectation = nock('https://pokeapi.co')
-  //   .get('/api/v2/pokemon')
-  //   .reply(200, {
-  //     results: [{ name: 'Pokename' }],
-  //   });
-
-  const { getByTestId, getAllByText, getByText, debug } = testRender();
+test('Should render art objects item fetched from rinks api', async () => {
+  const { getByTestId, getAllByText, getByText } = testRender();
 
   await waitForElementToBeRemoved(getByTestId('spinner'));
 
@@ -133,12 +131,21 @@ test('renders learn react link', async () => {
   expect(
     getByText('Ten weepers from the tomb of Isabella of Bourbon 2'),
   ).toBeInTheDocument(1);
-  expect(getAllByText('Borman workshop, Renier van Thienen (I)')).toHaveLength(
-    2,
-  );
-  debug();
-  // expect(wfs).toHaveBeenCalledWith('asd');
-  // expect(wfs).toHaveBeenCalledWith('asd');
+  expect(
+    getAllByText('by Borman workshop, Renier van Thienen (I)'),
+  ).toHaveLength(2);
+});
 
-  // expect(getByText('Pokename')).toBeInTheDocument();
+test('Should redirect to art object details when item clicked', async () => {
+  const context = { location: '' };
+  const { getByTestId, getByText } = testRender(context);
+
+  await waitForElementToBeRemoved(getByTestId('spinner'));
+
+  const artObjectLink = getByTestId(`artObject:item:BK-AM-33-D`);
+
+  fireEvent.click(artObjectLink);
+
+  expect(context.location.pathname).toBe('/rijks/BK-AM-33-D');
+  expect(getByText('mock details page')).toBeInTheDocument();
 });

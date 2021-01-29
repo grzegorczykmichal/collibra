@@ -31,7 +31,11 @@ function ArtObjectsList({ artObjects, className }: Props) {
       {artObjects.map((art, i) => {
         return (
           <Item className={css.item} key={art.objectNumber}>
-            <Link className={css.link} to={`/rijks/${art.objectNumber}`}>
+            <Link
+              data-testid={`artObject:item:${art.objectNumber}`}
+              className={css.link}
+              to={`/rijks/${art.objectNumber}`}
+            >
               <div className={css.artObjectItem}>
                 <p className={css.title}>{art.title}</p>
                 <p className={css.author}> by {art.principalOrFirstMaker}</p>
