@@ -1,0 +1,23 @@
+.root {
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.root + * {
+  margin: 0.5rem 0 0 0;
+}
+
+.text {
+  border-top: 1px solid var(--dark1);
+}
+
+.dark {
+  color: var(--light1);
+}
+
+.dark .text {
+  border-color: var(--light1);
+}

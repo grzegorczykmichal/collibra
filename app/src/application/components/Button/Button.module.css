@@ -1,0 +1,29 @@
+.root {
+  font-family: var(--secondaryFont);
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.5rem 0.5rem;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  color: var(--dark1);
+  transition: background 0.5s;
+  background: var(--accent1);
+  border: none;
+  display: inline-block;
+}
+
+.secondary {
+  background: transparent;
+  color: var(--dark1);
+}
+
+.root:hover,
+.root:focus {
+  background: var(--accent2);
+  color: var(--dark1);
+  cursor: pointer;
+}
+
+.root:disabled {
+  opacity: 0.5;
+}

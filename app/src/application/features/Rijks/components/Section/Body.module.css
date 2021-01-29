@@ -1,0 +1,9 @@
+.root {
+  color: var(--dark2);
+}
+
+.light {
+}
+.dark {
+  color: var(--light1);
+}

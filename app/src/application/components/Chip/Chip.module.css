@@ -1,0 +1,22 @@
+.root {
+  background: var(--dark1);
+  color: var(--light1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  display: inline-block;
+}
+.root:hover {
+  background: var(--dark2);
+}
+
+.root + .root {
+  margin: 0.5rem 0 0 0.5rem;
+}
+
+.root > * {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  text-decoration: none;
+}
