@@ -1,15 +1,16 @@
 import React from 'react';
 import { render, waitForElementToBeRemoved } from '@testing-library/react';
-import { App } from './App';
+import { Rijks } from './Rijks';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { MemoryRouter } from 'react-router';
+import {} from 'msw';
 
 const testRender = () => {
   const queryClient = new QueryClient();
   return render(
     <MemoryRouter>
       <QueryClientProvider client={queryClient}>
-        <App />
+        <Rijks />
       </QueryClientProvider>
     </MemoryRouter>,
   );

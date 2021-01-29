@@ -8,7 +8,7 @@ const Providers: FC<{ root: any }> = ({ root, children }) => {
     <ReduxProvider root={root}>
       <ReactQueryProvider>
         <DribbleProvider
-          clientId="99ddd8c588de9d8fcca6ba56ac5d1f48a4f5e8fcebb1376b2b4d385d9efa232c"
+          clientId="4a75e32c2cc0d4220b0935d3a0c69914b541395f403f70f2a44fbbe256c8924f"
           state="state_1234"
           scope={['public']}
         >

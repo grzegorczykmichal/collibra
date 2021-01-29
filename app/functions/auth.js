@@ -37,12 +37,18 @@ exports.handler = async function (event, context) {
       code: code,
     });
 
+    console.log({
+      client_id: process.env.DRIBBLE_CLIENT_ID,
+      client_secret: process.env.DRIBBLE_SECRET_ID,
+      code: code,
+    });
+
     const tokenData = JSON.stringify(response.data);
     console.log(tokenData);
     return {
       statusCode: 302,
       headers: {
-        Location: '/app',
+        Location: '/dribble',
         'Set-Cookie': `auth_token_data=${tokenData}; Path=/; Max-Age=3600`,
       },
     };
@@ -50,7 +56,7 @@ exports.handler = async function (event, context) {
     return {
       statusCode: 302,
       headers: {
-        Location: '/error',
+        Location: `/error?message${encodeURIComponent(error.message)}`,
       },
     };
   }

@@ -1,4 +1,4 @@
-import { User, useDribble } from '../../../infrastucture';
+import { User, useDribble } from '../../../../infrastucture';
 import { useQuery } from 'react-query';
 
 type Props = {};
@@ -32,7 +32,7 @@ function DribbleUser(props: Props) {
   if (isSuccess && data) {
     return (
       <div>
-        Name: {data.name}
+        <p>{data.name}</p>
         <img src={data.avatar_url} alt={`${data.name} avatar`} />
       </div>
     );

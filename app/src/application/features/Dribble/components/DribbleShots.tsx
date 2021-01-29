@@ -1,4 +1,4 @@
-import { Shot, useDribble } from '../../../infrastucture';
+import { Shot, useDribble } from '../../../../infrastucture';
 import { useQuery } from 'react-query';
 
 type Props = {};
