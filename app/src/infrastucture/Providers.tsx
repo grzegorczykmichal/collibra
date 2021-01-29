@@ -9,7 +9,7 @@ const Providers: FC<{ root: any }> = ({ root, children }) => {
       <ReactQueryProvider>
         <DribbleProvider
           clientId={process.env.REACT_APP_DRIBBLE_CLIENT_ID}
-          state={process.env.REACT_APP_DRIBBLE_CLIENT_ID}
+          state={process.env.REACT_APP_DRIBBLE_STATE}
           scopes={process.env.REACT_APP_DRIBBLE_SCOPES}
         >
           {children}

@@ -3,11 +3,10 @@ import css from './Dribble.module.css';
 import { DribbleUser, DribbleShots } from '../components';
 
 function Dribble() {
-  const { token, isLoggedIn } = useDribble();
+  const { isLoggedIn } = useDribble();
 
   return (
     <div className={css.page}>
-      {typeof token}
       {isLoggedIn() ? (
         <>
           <DribbleUser />
