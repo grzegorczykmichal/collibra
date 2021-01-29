@@ -3,10 +3,11 @@
 
 ### Prerequisites
 1.  Ensure you have ```node``` installed
+
 2.  Instal netlify development environment by runngin the following command
-    ```bash
-    npm install netlify-cli -g
-    ```
+```bash
+npm install netlify-cli -g
+```
   
 ### Setup
 1. Clone this repository
