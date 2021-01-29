@@ -1,5 +1,6 @@
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import { rijksApi } from '../../../../infrastucture/rijks';
 import { Spinner } from '../../../components';
 import {
   Author,
@@ -17,7 +18,6 @@ import {
 } from '../components';
 import { Image } from '../components/Image';
 import { useBackgroundColor } from '../hooks';
-import { rjiksApi } from '../lib/rjiksApi';
 import { RjikApiResponseArtObject } from '../models';
 import css from './RijksObject.module.css';
 
@@ -42,7 +42,7 @@ function RijksObject() {
   >(
     ['rjik_objects', objectNumber],
     async () => {
-      const response = await rjiksApi.get(`/collection/${objectNumber}`);
+      const response = await rijksApi.get(`/collection/${objectNumber}`);
       return response.data;
     },
     {

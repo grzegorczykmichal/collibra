@@ -8,9 +8,9 @@ const Providers: FC<{ root: any }> = ({ root, children }) => {
     <ReduxProvider root={root}>
       <ReactQueryProvider>
         <DribbleProvider
-          clientId="4a75e32c2cc0d4220b0935d3a0c69914b541395f403f70f2a44fbbe256c8924f"
-          state="state_1234"
-          scope={['public']}
+          clientId={process.env.REACT_APP_DRIBBLE_CLIENT_ID}
+          state={process.env.REACT_APP_DRIBBLE_CLIENT_ID}
+          scopes={process.env.REACT_APP_DRIBBLE_SCOPES}
         >
           {children}
         </DribbleProvider>

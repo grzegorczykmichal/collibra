@@ -3,8 +3,8 @@ import css from './DeleteButton.module.css';
 import classnames from 'classnames';
 import { Snackbar } from '@material-ui/core';
 import { useMutation } from 'react-query';
-import { rjiksApi } from '../../lib/rjiksApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { rijksApi } from '../../../../../infrastucture/rijks';
 
 type Props = { className?: string; objectNumber: string };
 
@@ -14,7 +14,7 @@ function DeleteButton({ className, objectNumber }: Props) {
     { message: string },
     { objectNumber: string }
   >(async (data) => {
-    return rjiksApi.post('https://httpstat.us/401/cors');
+    return rijksApi.post('https://httpstat.us/401/cors');
   });
 
   return (

@@ -4,9 +4,9 @@ import css from './Description.module.css';
 import { Body, Header, Section } from '../Section';
 import { DescriptionForm } from './DescriptionForm';
 import { Button } from '../../../../components';
-import { rjiksApi } from '../../lib/rjiksApi';
 import { Snackbar } from '@material-ui/core';
 import { AddDescription } from './AddDescription';
+import { rijksApi } from '../../../../../infrastucture/rijks';
 
 type Props = { description: string; className: string };
 
@@ -24,7 +24,7 @@ function Description({ description, className }: Props) {
     { message: string },
     { description: string }
   >((data) => {
-    return rjiksApi.post('https://httpstat.us/400/cors', data);
+    return rijksApi.post('https://httpstat.us/400/cors', data);
   });
 
   return (

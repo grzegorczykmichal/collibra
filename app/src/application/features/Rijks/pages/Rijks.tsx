@@ -3,10 +3,10 @@ import { useQuery } from 'react-query';
 import { useLocation } from 'react-router-dom';
 import { Spinner } from '../../../components';
 import { ArtObjectsList, Filters, Pagination } from '../components';
-import { rjiksApi } from '../lib/rjiksApi';
 import { RjikApiResponseCollection } from '../models';
 import css from './Rijks.module.css';
 import classnames from 'classnames';
+import { rijksApi } from '../../../../infrastucture/rijks';
 
 function Rijks() {
   const { search } = useLocation();
@@ -17,7 +17,7 @@ function Rijks() {
   const { isLoading, data } = useQuery<RjikApiResponseCollection>(
     ['rjik_objects', search],
     async () => {
-      const response = await rjiksApi.get(
+      const response = await rijksApi.get(
         `/collection?${stringify(searchObject)}`,
       );
       return response.data;

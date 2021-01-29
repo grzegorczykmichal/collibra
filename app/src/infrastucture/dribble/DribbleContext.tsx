@@ -48,15 +48,14 @@ function useLocalStorage(
 }
 
 const DribbleProvider: React.FC<{
-  clientId: string;
-  state: string;
-  scope: string[];
-}> = ({ clientId, state, scope = ['upload', 'public'], children }) => {
+  clientId?: string;
+  state?: string;
+  scopes?: string;
+}> = ({ clientId = '', state = '', scopes = 'upload+public', children }) => {
   const authenticationUrl = useMemo(() => {
-    const scopesString = scope.join('+');
-    const queryString = `client_id=${clientId}&state=${state}&scope=${scopesString}`;
-    return `https://dribbble.com/oauth/authorize?${queryString}`;
-  }, [clientId, scope, state]);
+    const queryString = `client_id=${clientId}&state=${state}&scope=${scopes}`;
+    return `${process.env.REACT_APP_DRIBBLE_AUTHORIZE_URL}?${queryString}`;
+  }, [clientId, state, scopes]);
 
   const [token, setToken] = useLocalStorage('dribble', '');
 
@@ -64,7 +63,6 @@ const DribbleProvider: React.FC<{
     const tokenData = cookie.get('auth_token_data');
     if (tokenData) {
       const tokenDataJson = JSON.parse(tokenData);
-      console.log(tokenDataJson);
       setToken(tokenDataJson.access_token as string);
     } else {
       setToken('');
@@ -72,7 +70,7 @@ const DribbleProvider: React.FC<{
   }, [setToken]);
 
   const dribbleAxios = axios.create({
-    baseURL: 'https://api.dribbble.com/v2/',
+    baseURL: process.env.REACT_APP_DRIBBLE_API_URL,
   });
   dribbleAxios.interceptors.request.use(
     (config) => {

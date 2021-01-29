@@ -22,7 +22,7 @@ function App() {
         </Switch>
       </div>
       <footer className={style.footer}>
-        <p>Collibra Fonend Challange</p>
+        <p>Collibra Frontend Challange</p>
         <p>Michał Grzergoczyk</p>
       </footer>
     </main>

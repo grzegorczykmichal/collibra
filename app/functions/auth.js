@@ -31,20 +31,13 @@ exports.handler = async function (event, context) {
   }
 
   try {
-    const response = await axios.post(process.env.DRIBBLE_URL, {
-      client_id: process.env.DRIBBLE_CLIENT_ID,
-      client_secret: process.env.DRIBBLE_SECRET_ID,
-      code: code,
-    });
-
-    console.log({
+    const response = await axios.post(process.env.DRIBBLE_TOKEN_URL, {
       client_id: process.env.DRIBBLE_CLIENT_ID,
       client_secret: process.env.DRIBBLE_SECRET_ID,
       code: code,
     });
 
     const tokenData = JSON.stringify(response.data);
-    console.log(tokenData);
     return {
       statusCode: 302,
       headers: {
